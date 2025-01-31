@@ -1,4 +1,4 @@
-# Planning and pseudocode for etch-a-sketch game
+# Planning and pseudocode for calculator
 ## Does your program have a user interface? What will it look like? What functionality will the interface have?
 - Calculator has user interface. 
 - Top of calculator has display that shows ongoing calculation. Eg: shows numbers you click or result of calculation. 
@@ -36,7 +36,8 @@
         - returns their product. 
     - Divide 
         - takes two number paramters. 
-        - returns quotient of first divided by second. 
+        - if second number = 0, return error message. 
+        - else, returns quotient of first divided by second. 
     - Converting percentage to decimal 
         - takes one number parameter. 
         - returns that number / 100
@@ -50,7 +51,10 @@
     - Another number. 
 4. Create operate function. 
     - takes three parameters, two numbers and operator. 
-    - Conditional logic based on the operator to return the result of the correct operator function. 
+    - Conditional logic based on the operator to decide which operator function to run. 
+    - set new variable to the result of the operator function with the number variables as parameter. 
+    - set number and operator variables back to 0. 
+    - return result of operator function. 
 5. Functions that populate the display. 
     - Function that removes current number/operator in display. 
         -  Selects div that holds current display number. 
@@ -63,6 +67,20 @@
         - Maybe selects parent display div. 
         - Inserts new div into the DOM. 
 6. Make the calculator work: 
-    - Event handler(s)
+    - Put event handler on the container for all buttons. Use event delegation to capture click on child button when it bubbles up. 
+    - When a button is clicked, check if user input is a number or a decimal.
+        - If first number variable is 0 and operator variable is 0. 
+            - assign number or decimal to first number variable. 
+        - If first number variable != 0 and operator variable is 0. 
+            - If user input is a number. 
+                - Concat it to first number variable. 
+            - Else. 
+                - if .includes() string method on string doesn't include decimal. 
+                    - concat decimal to first number variable. 
+        - If first number variable !=0 and operator variable != 0 and second number variable = 0. 
+            - assign number or decimal to second number variable. 
+        
+
+    
 
 
