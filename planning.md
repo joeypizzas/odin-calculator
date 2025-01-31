@@ -24,3 +24,45 @@
     - Below that is next row of buttons. Parent has flex box. Button children are 1, 2, 3, +. First three are same color as numbers, last same color as other operators.
     - Below that is next row of buttons. Parent has flex box. Button children are 0, ., =. First tw0 are same color as numbers, last same color as other operators.
     - Border around entire calculator. Border between each button. Border around display. Each calculator row same size. 
+2. Create functions for math operators. 
+    - Add: 
+        - takes two number parameters. 
+        - returns them added together. 
+    - Subctract
+        - takes two number paramters. 
+        - returns them, second subctracted from the first. 
+    - Multiply 
+        - takes two number parameters. 
+        - returns their product. 
+    - Divide 
+        - takes two number paramters. 
+        - returns quotient of first divided by second. 
+    - Converting percentage to decimal 
+        - takes one number parameter. 
+        - returns that number / 100
+    - Plus/negative
+        - Takes one number parameter. 
+        - If parameter > 0, returns paramter - (parameter * 2)
+        - else, returns parameter - (parameter * 2)
+3. Initialize three global variables for operations. 
+    - One number. 
+    - One operator. 
+    - Another number. 
+4. Create operate function. 
+    - takes three parameters, two numbers and operator. 
+    - Conditional logic based on the operator to return the result of the correct operator function. 
+5. Functions that populate the display. 
+    - Function that removes current number/operator in display. 
+        -  Selects div that holds current display number. 
+        -  Deletes it. 
+    - Function that adds new item to display. 
+        - Takes parameter, either number or operator. 
+        - Creates new div. 
+        - Adds text content with parameter. 
+        - Adds class with style that original display number had. 
+        - Maybe selects parent display div. 
+        - Inserts new div into the DOM. 
+6. Make the calculator work: 
+    - Event handler(s)
+
+
