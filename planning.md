@@ -22,7 +22,7 @@
     - Below that is next row of buttons. Parent has flex box. Button children are 7, 8, 9, *. First three are same color as numbers, last same color as other operators. 
     - Below that is next row of buttons. Parent has flex box. Button children are 4, 5, 6, -. First three are same color as numbers, last same color as other operators.
     - Below that is next row of buttons. Parent has flex box. Button children are 1, 2, 3, +. First three are same color as numbers, last same color as other operators.
-    - Below that is next row of buttons. Parent has flex box. Button children are 0, ., =. First tw0 are same color as numbers, last same color as other operators.
+    - Below that is next row of buttons. Parent has flex box. Button children are 0, ., =. First two are same color as numbers, last same color as other operators.
     - Border around entire calculator. Border between each button. Border around display. Each calculator row same size. 
 2. Create functions for math operators. 
     - Add: 
@@ -53,7 +53,7 @@
     - takes three parameters, two numbers and operator. 
     - Conditional logic based on the operator to decide which operator function to run. 
     - set new variable to the result of the operator function with the number variables as parameter. 
-    - set number and operator variables back to 0. 
+    - set number and operator variables back to 'empty'. 
     - return result of operator function. 
 5. Functions that populate the display. 
     - Function that removes current number/operator in display. 
@@ -68,17 +68,44 @@
         - Inserts new div into the DOM. 
 6. Make the calculator work: 
     - Put event handler on the container for all buttons. Use event delegation to capture click on child button when it bubbles up. 
-    - When a button is clicked, check if user input is a number or a decimal.
-        - If first number variable is 0 and operator variable is 0. 
+    - When a button is clicked, if user input is a number or a decimal.
+        - If first number variable is 'empty' and operator variable is 'empty'. 
             - assign number or decimal to first number variable. 
-        - If first number variable != 0 and operator variable is 0. 
+        - Else if first number variable != 'empty' and operator variable is 'empty'. 
             - If user input is a number. 
                 - Concat it to first number variable. 
             - Else. 
                 - if .includes() string method on string doesn't include decimal. 
                     - concat decimal to first number variable. 
-        - If first number variable !=0 and operator variable != 0 and second number variable = 0. 
+        - Else if first number variable !='empty' and operator variable != 'empty' and second number variable = 'empty'. 
             - assign number or decimal to second number variable. 
+        - Else first number variable != 'empty' and operator variable != 'empty' and second number variable != 'empty'. 
+            - If user input is a number. 
+                - Concat it to second number variable. 
+            - Else. 
+                - if .includes() string method on string doesn't include decimal. 
+                    - concat decimal to second number variable. 
+    Else (meaning user input is an operator or clear button). 
+        - If operator variable === 'empty'. 
+            - If user input === +. 
+                - Assign user input to operator variable. 
+            - Else If user input === -.
+                - Assign user input to operator variable. 
+            - Else If user input === *. 
+                - Assign user input to operator variable. 
+            - Else If user input === /. 
+                - Assign user input to operator variable. 
+            - Else If user input === %. 
+                - Assign user input to operator variable. 
+        - Else If user input === +/-. 
+            - If first number variable !='empty' and second number variable = 'empty'. 
+                - call +/- function 
+        - Else If user input === a/c. 
+        - Else user input === =. 
+
+
+
+
         
 
     
