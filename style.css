@@ -1,1 +1,71 @@
 /* TOP calculator style */
+
+#body {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    background-color: blanchedalmond;
+}
+
+#calculator {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+
+#display {
+    display: flex;
+    justify-content: right;
+    background-color: lightgrey;
+    padding: 10px;
+}
+
+.displayInput {
+    font-size: 75px;;
+}
+
+#firstRowButtons {
+    display: flex;
+    width: 400px;
+}
+
+#secondRowButtons {
+    display: flex;
+}
+
+#thirdRowButtons {
+    display: flex;
+}
+
+#fourthRowButtons {
+    display: flex;
+}
+
+#fifthRowButtons {
+    display: flex;
+}
+
+.specialButton, .operator, .number, .zero {
+    font-size: 25px;
+    padding: 25px;
+}
+
+.specialButton, .operator, .number {
+    flex: 1;
+}
+
+.zero {
+    flex: 3;
+}
+
+.specialButton { 
+    background-color: chocolate;
+}
+
+.operator {
+    background-color: orange;
+}
+
+.number, .zero {
+    background-color: gold;
+}
