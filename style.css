@@ -3,51 +3,44 @@
 #body {
     display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
+    height: 100vh;
     background-color: blanchedalmond;
 }
 
 #calculator {
     display: flex;
     flex-direction: column;
-    width: 400px;
+    width: 410px;
+    background-color: #222222;
+    border: 10px solid #222222;
+    border-radius: 10px;
+    gap: 5px
 }
 
 #display {
     display: flex;
     justify-content: right;
     background-color: lightgrey;
-    padding: 10px;
+    padding: 
+    border: 5px solid black;
+
 }
 
 .displayInput {
-    font-size: 75px;;
+    font-size: 75px;
 }
 
-#firstRowButtons {
+#firstRowButtons, #secondRowButtons, #thirdRowButtons, #fourthRowButtons, #fifthRowButtons {
     display: flex;
-    width: 400px;
-}
-
-#secondRowButtons {
-    display: flex;
-}
-
-#thirdRowButtons {
-    display: flex;
-}
-
-#fourthRowButtons {
-    display: flex;
-}
-
-#fifthRowButtons {
-    display: flex;
+    gap: 5px;
 }
 
 .specialButton, .operator, .number, .zero {
     font-size: 25px;
     padding: 25px;
+    border: none;
+    border-radius: 10px;
 }
 
 .specialButton, .operator, .number {
@@ -55,7 +48,7 @@
 }
 
 .zero {
-    flex: 3;
+    flex: 2;
 }
 
 .specialButton { 
