@@ -22,9 +22,8 @@
     display: flex;
     justify-content: right;
     background-color: lightgrey;
-    padding: 
     border: 5px solid black;
-
+    border-radius: 10px;
 }
 
 .displayInput {
