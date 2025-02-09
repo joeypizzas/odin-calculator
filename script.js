@@ -51,3 +51,16 @@ function allClear() {
     secondNumInput = 0;
     operatorInput = 0;
 }
+
+const calculator = document.querySelector("#calculator");
+calculator.addEventListener("mousedown", (event) => {
+    if (event.target.tagName === "BUTTON" && event.target.closest("#calculator")) {
+        if (event.target.classList.contains("specialButton")) {
+            event.target.style.backgroundColor = "#D2B097";
+        } else if (event.target.classList.contains("number") || event.target.classList.contains("zero")) {
+            event.target.style.backgroundColor = "#DAA520";
+        } else {
+            event.target.style.backgroundColor = "#FF7F50";
+        }
+    }
+});

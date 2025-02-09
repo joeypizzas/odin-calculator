@@ -31,7 +31,7 @@
     font-size: 75px;
 }
 
-#firstRowButtons, #secondRowButtons, #thirdRowButtons, #fourthRowButtons, #fifthRowButtons {
+.buttonRow {
     display: flex;
     gap: 5px;
 }
