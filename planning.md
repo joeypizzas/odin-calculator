@@ -43,8 +43,7 @@
         - returns that number / 100
     - Plus/negative
         - Takes one number parameter. 
-        - If parameter > 0, returns paramter - (parameter * 2)
-        - else, returns parameter - (parameter * 2)
+        - returns paramter - (parameter * 2)
 3. Initialize three global variables for operations. 
     - One number. 
     - One operator. 
