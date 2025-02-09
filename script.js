@@ -1,5 +1,9 @@
 // TOP caluclator script
 
+let firstNumInput = 0;
+let secondNumInput = 0;
+let operatorInput = 0;
+
 function add(num1, num2) {
     return num1 + num2;
 }
@@ -26,4 +30,24 @@ function percent(num) {
 
 function plusNegative(num) {
     return num - (num * 2);
+}
+
+function removeDisplayItem() {
+    const displayItem = document.querySelector(".displayInput");
+    displayItem.remove();
+}
+
+function addDisplayItem(num) {
+    const display = document.querySelector("#display");
+    const newDisplayItem = document.createElement("div");
+    newDisplayItem.classList.add("displayInput");
+    display.appendChild(newDisplayItem);
+}
+
+function allClear() {
+    removeDisplayItem();
+    addDisplayItem(0);
+    firstNumInput = 0;
+    secondNumInput = 0;
+    operatorInput = 0;
 }
