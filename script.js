@@ -41,6 +41,7 @@ function addDisplayItem(num) {
     const display = document.querySelector("#display");
     const newDisplayItem = document.createElement("div");
     newDisplayItem.classList.add("displayInput");
+    newDisplayItem.textContent = num;
     display.appendChild(newDisplayItem);
 }
 
@@ -61,6 +62,28 @@ calculator.addEventListener("mousedown", (event) => {
             event.target.style.backgroundColor = "#DAA520";
         } else {
             event.target.style.backgroundColor = "#FF7F50";
+        }
+    }
+});
+
+calculator.addEventListener("mouseup", (event) => {
+    if (event.target.tagName === "BUTTON" && event.target.closest("#calculator")) {
+        if (!isNaN(event.target.textContent) || event.target.textContent === ".") {
+            if (firstNumInput === 0 && operatorInput === 0) {
+                firstNumInput = event.target.textContent;
+                removeDisplayItem();
+                addDisplayItem(firstNumInput);
+            } else if (firstNumInput != 0 && operatorInput === 0) {
+                if (!isNaN(event.target.textContent)) {
+                    firstNumInput += event.target.textContent;
+                } else if (!firstNumInput.includes(".")) {
+                    firstNumInput += event.target.textContent;
+                } else {
+                }
+                removeDisplayItem();
+                addDisplayItem(firstNumInput);
+            }
+            event.target.style.backgroundColor = "gold";
         }
     }
 });
