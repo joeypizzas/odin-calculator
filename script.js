@@ -126,6 +126,12 @@ calculator.addEventListener("mouseup", (event) => {
                     specialButton.forEach(item => {
                         item.style.backgroundColor = "chocolate";
                     });
+            } else if (event.target.textContent === "A/C") {
+                allClear();
+                const specialButton = document.querySelectorAll(".specialButton");
+                    specialButton.forEach(item => {
+                        item.style.backgroundColor = "chocolate";
+                    });
             }
         }
     }
