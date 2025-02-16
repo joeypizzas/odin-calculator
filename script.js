@@ -126,12 +126,25 @@ calculator.addEventListener("mouseup", (event) => {
                     specialButton.forEach(item => {
                         item.style.backgroundColor = "chocolate";
                     });
-            } else if (event.target.textContent === "A/C") {
-                allClear();
+            } else if (event.target.textContent === "%") {
+                const displayInput = document.querySelector(".displayInput");
+                if (displayInput.textContent === firstNumInput) {
+                    firstNumInput = percent(firstNumInput);
+                    displayInput.textContent = firstNumInput;
+                } else {
+                    secondNumInput = percent(secondNumInput);
+                    displayInput.textContent = secondNumInput;
+                }
                 const specialButton = document.querySelectorAll(".specialButton");
                     specialButton.forEach(item => {
                         item.style.backgroundColor = "chocolate";
                     });
+            } else if (event.target.textContent === "A/C") {
+                allClear();
+                const specialButton = document.querySelectorAll(".specialButton");
+                specialButton.forEach(item => {
+                    item.style.backgroundColor = "chocolate";
+                });
             }
         }
     }
