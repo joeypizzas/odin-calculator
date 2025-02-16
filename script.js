@@ -73,17 +73,39 @@ calculator.addEventListener("mouseup", (event) => {
                 firstNumInput = event.target.textContent;
                 removeDisplayItem();
                 addDisplayItem(firstNumInput);
-            } else if (firstNumInput != 0 && operatorInput === 0) {
+            } else if (firstNumInput != 0 && operatorInput === 0 && firstNumInput.length < 10) {
                 if (!isNaN(event.target.textContent)) {
                     firstNumInput += event.target.textContent;
                 } else if (!firstNumInput.includes(".")) {
                     firstNumInput += event.target.textContent;
-                } else {
-                }
+                } 
                 removeDisplayItem();
                 addDisplayItem(firstNumInput);
+            } else if (firstNumInput != 0 && operatorInput != 0 && secondNumInput === 0) {
+                secondNumInput = event.target.textContent;
+                removeDisplayItem();
+                addDisplayItem(secondNumInput);
+                const operator = document.querySelectorAll(".operator");
+                operator.forEach(item => {
+                    item.style.backgroundColor = "orange";
+                });
+            } else if (firstNumInput != 0 && operatorInput != 0 && secondNumInput != 0 && secondNumInput.length < 10) {
+                if (!isNaN(event.target.textContent)) {
+                    secondNumInput += event.target.textContent;
+                } else if (!secondNumInput.includes(".")) {
+                    secondNumInput += event.target.textContent;
+                }
+                removeDisplayItem();
+                addDisplayItem(secondNumInput);
             }
             event.target.style.backgroundColor = "gold";
+        } else {
+            if (operatorInput === 0) {
+                if (event.target.textContent === "+" || event.target.textContent === "-" || event.target.textContent === "*" || event.target.textContent === "/") {
+                    operatorInput = event.target.textContent; 
+                    console.log(operatorInput);
+                }
+            } 
         }
     }
 });
