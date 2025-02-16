@@ -103,9 +103,30 @@ calculator.addEventListener("mouseup", (event) => {
             if (operatorInput === 0) {
                 if (event.target.textContent === "+" || event.target.textContent === "-" || event.target.textContent === "*" || event.target.textContent === "/") {
                     operatorInput = event.target.textContent; 
-                    console.log(operatorInput);
                 }
             } 
+            if (event.target.textContent === "+/-") {
+                const displayInput = document.querySelector(".displayInput");
+                if (displayInput.textContent === firstNumInput) {
+                    firstNumInput = plusNegative(firstNumInput);
+                    if (String(firstNumInput).length === 11) {
+                        let shortenedFirstNumInput = String(firstNumInput).slice(0, -1);
+                        firstNumInput = shortenedFirstNumInput;
+                    }
+                    displayInput.textContent = firstNumInput;
+                } else {
+                    secondNumInput = plusNegative(secondNumInput);
+                    if (String(secondNumInput).length === 11) {
+                        let shortenedSecondNumInput = String(secondNumInput).slice(0, -1);
+                        secondNumInput = shortenedSecondNumInput;
+                    }
+                    displayInput.textContent = secondNumInput;
+                }
+                const specialButton = document.querySelectorAll(".specialButton");
+                    specialButton.forEach(item => {
+                        item.style.backgroundColor = "chocolate";
+                    });
+            }
         }
     }
 });
