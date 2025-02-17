@@ -145,6 +145,10 @@ calculator.addEventListener("mouseup", (event) => {
                 specialButton.forEach(item => {
                     item.style.backgroundColor = "chocolate";
                 });
+                const operator = document.querySelectorAll(".operator");
+                operator.forEach(item => {
+                    item.style.backgroundColor = "orange";
+                });
             }
         }
     }
