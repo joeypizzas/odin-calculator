@@ -5,22 +5,30 @@ let secondNumInput = 0;
 let operatorInput = 0;
 
 function add(num1, num2) {
-    return num1 + num2;
+    firstNumInput = Number(num1) + Number(num2);
+    secondNumInput = 0;
+    return firstNumInput;
 }
 
 function subtract(num1, num2) {
-    return num1 - num2;
+    firstNumInput = num1 - num2;
+    secondNumInput = 0;
+    return firstNumInput;
 }
 
 function multiply(num1, num2) {
-    return num1 * num2;
+    firstNumInput = num1 * num2;
+    secondNumInput = 0;
+    return firstNumInput;
 }
 
 function divide(num1, num2) {
     if (num2 === 0) {
-        return "CHUMP";
+        return "CHUMP"; // Look into this case more. 
     } else {
-        return num1 / num2;
+        firstNumInput = num1 / num2;
+        secondNumInput = 0
+        return firstNumInput;
     }
 }
 
@@ -104,7 +112,22 @@ calculator.addEventListener("mouseup", (event) => {
                 if (event.target.textContent === "+" || event.target.textContent === "-" || event.target.textContent === "*" || event.target.textContent === "/") {
                     operatorInput = event.target.textContent; 
                 }
-            } 
+            } else {
+                if (event.target.textContent === "+") {
+                    removeDisplayItem();
+                    if (operatorInput === "+") {
+                        addDisplayItem(add(firstNumInput, secondNumInput));
+                    } else if (operatorInput === "-") {
+                        addDisplayItem(subtract(firstNumInput, secondNumInput));
+                    } else if (operatorInput === "*") {
+                        addDisplayItem(multiply(firstNumInput, secondNumInput)); 
+                    } else {
+                        addDisplayItem(divide(firstNumInput, secondNumInput));
+                    }
+                    operatorInput = "+";
+                }
+            }
+
             if (event.target.textContent === "+/-") {
                 const displayInput = document.querySelector(".displayInput");
                 if (displayInput.textContent === firstNumInput) {
