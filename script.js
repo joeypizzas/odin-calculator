@@ -125,6 +125,42 @@ calculator.addEventListener("mouseup", (event) => {
                         addDisplayItem(divide(firstNumInput, secondNumInput));
                     }
                     operatorInput = "+";
+                } else if (event.target.textContent === "-") {
+                    removeDisplayItem();
+                    if (operatorInput === "+") {
+                        addDisplayItem(add(firstNumInput, secondNumInput));
+                    } else if (operatorInput === "-") {
+                        addDisplayItem(subtract(firstNumInput, secondNumInput));
+                    } else if (operatorInput === "*") {
+                        addDisplayItem(multiply(firstNumInput, secondNumInput)); 
+                    } else {
+                        addDisplayItem(divide(firstNumInput, secondNumInput));
+                    }
+                    operatorInput = "-";
+                } else if (event.target.textContent === "*") {
+                    removeDisplayItem();
+                    if (operatorInput === "+") {
+                        addDisplayItem(add(firstNumInput, secondNumInput));
+                    } else if (operatorInput === "-") {
+                        addDisplayItem(subtract(firstNumInput, secondNumInput));
+                    } else if (operatorInput === "*") {
+                        addDisplayItem(multiply(firstNumInput, secondNumInput)); 
+                    } else {
+                        addDisplayItem(divide(firstNumInput, secondNumInput));
+                    }
+                    operatorInput = "*";
+                } else if (event.target.textContent === "/") {
+                    removeDisplayItem();
+                    if (operatorInput === "+") {
+                        addDisplayItem(add(firstNumInput, secondNumInput));
+                    } else if (operatorInput === "-") {
+                        addDisplayItem(subtract(firstNumInput, secondNumInput));
+                    } else if (operatorInput === "*") {
+                        addDisplayItem(multiply(firstNumInput, secondNumInput)); 
+                    } else {
+                        addDisplayItem(divide(firstNumInput, secondNumInput));
+                    }
+                    operatorInput = "/";
                 }
             }
 
