@@ -4,27 +4,31 @@ let firstNumInput = 0;
 let secondNumInput = 0;
 let operatorInput = 0;
 
+// Calculates the sum of user inputs, prepares second input for chained calculations
 function add(num1, num2) {
     firstNumInput = Number(num1) + Number(num2);
     secondNumInput = 0;
     return firstNumInput;
 }
 
+// // Calculates the difference of user inputs, prepares second input for chained calculations
 function subtract(num1, num2) {
     firstNumInput = num1 - num2;
     secondNumInput = 0;
     return firstNumInput;
 }
 
+// Calculates the product of user inputs, prepares second input for chained calculations
 function multiply(num1, num2) {
     firstNumInput = num1 * num2;
     secondNumInput = 0;
     return firstNumInput;
 }
 
+// Calculates the quotient of user inputs, prepares second input for chained calculations
 function divide(num1, num2) {
     if (num2 === 0) {
-        return "CHUMP"; // Look into this case more. 
+        return "CHUMP"; 
     } else {
         firstNumInput = num1 / num2;
         secondNumInput = 0
@@ -61,6 +65,7 @@ function allClear() {
     operatorInput = 0;
 }
 
+// Highlights button on click down to give user feedback
 const calculator = document.querySelector("#calculator");
 calculator.addEventListener("mousedown", (event) => {
     if (event.target.tagName === "BUTTON" && event.target.closest("#calculator")) {
@@ -74,6 +79,7 @@ calculator.addEventListener("mousedown", (event) => {
     }
 });
 
+// Logic to store numbers/operators and perform calculations on click up from button
 calculator.addEventListener("mouseup", (event) => {
     if (event.target.tagName === "BUTTON" && event.target.closest("#calculator")) {
         if (!isNaN(event.target.textContent) || event.target.textContent === ".") {
