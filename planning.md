@@ -137,6 +137,11 @@
             -remove the current display item. 
             - set display item to result of operate function call, passing first, second, and operator variables as parameters. 
             - set operator variable to 0. 
+7. Running list of edge cases to fix:
+    - Dividing by 0 / clicking divide twice. 
+    - Starting with 0 and then using some operation to move to a different number from that. IE 0 + 3 should equal 3. 
+    - Clicking multiple operators in a row to start. 
+    
 
 
 
