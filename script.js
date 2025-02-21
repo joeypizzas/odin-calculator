@@ -157,13 +157,12 @@ calculator.addEventListener("mouseup", (event) => {
                         addDisplayItem(subtract(firstNumInput, secondNumInput));
                     } else if (operatorInput === "*") {
                         addDisplayItem(multiply(firstNumInput, secondNumInput)); 
-                    } else {
+                    } else if (operatorInput === "/") {
                         addDisplayItem(divide(firstNumInput, secondNumInput));
                     }
                     operatorInput = "/";
                 }
             }
-
             if (event.target.textContent === "+/-") {
                 const displayInput = document.querySelector(".displayInput");
                 if (displayInput.textContent === firstNumInput) {
@@ -204,6 +203,24 @@ calculator.addEventListener("mouseup", (event) => {
                 specialButton.forEach(item => {
                     item.style.backgroundColor = "chocolate";
                 });
+                const operator = document.querySelectorAll(".operator");
+                operator.forEach(item => {
+                    item.style.backgroundColor = "orange";
+                });
+            } else if (event.target.textContent === "=") {
+                if (operatorInput != 0) {
+                    removeDisplayItem();
+                    if (operatorInput === "+") {
+                        addDisplayItem(add(firstNumInput, secondNumInput));
+                    } else if (operatorInput === "-") {
+                        addDisplayItem(subtract(firstNumInput, secondNumInput));
+                    } else if (operatorInput === "*") {
+                        addDisplayItem(multiply(firstNumInput, secondNumInput)); 
+                    } else if (operatorInput === "/") {
+                        addDisplayItem(divide(firstNumInput, secondNumInput));
+                    }
+                    operatorInput = 0;
+                }
                 const operator = document.querySelectorAll(".operator");
                 operator.forEach(item => {
                     item.style.backgroundColor = "orange";
