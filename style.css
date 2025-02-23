@@ -11,11 +11,11 @@
 #calculator {
     display: flex;
     flex-direction: column;
-    width: 410px;
+    width: 400px;
     background-color: #222222;
     border: 10px solid #222222;
     border-radius: 10px;
-    gap: 5px
+    gap: 5px;
 }
 
 #display {
@@ -44,11 +44,11 @@
 }
 
 .specialButton, .operator, .number {
-    flex: 1;
+    width: 25%;
 }
 
 .zero {
-    flex: 2;
+    width: 50%;
 }
 
 .specialButton { 
