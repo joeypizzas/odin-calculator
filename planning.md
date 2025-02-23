@@ -142,6 +142,7 @@
     - Starting with 0 and then using some operation to move to a different number from that. IE 0 + 3 should equal 3. 
     - Clicking multiple operators in a row to start. 
     - fix size of 0 button. 
+    - buttons don't work if first number entered is zero. 
     
 
 

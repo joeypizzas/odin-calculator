@@ -27,7 +27,10 @@ function multiply(num1, num2) {
 
 // Calculates the quotient of user inputs, prepares second input for chained calculations
 function divide(num1, num2) {
-    if (num2 === 0) {
+    if (Number(num2) === 0) {
+        firstNumInput = 0;
+        secondNumInput = 0;
+        operatorInput = 0;
         return "CHUMP"; 
     } else {
         firstNumInput = num1 / num2;
