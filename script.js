@@ -33,8 +33,12 @@ function divide(num1, num2) {
         operatorInput = 0;
         return "CHUMP"; 
     } else {
-        firstNumInput = num1 / num2;
-        secondNumInput = 0
+        if (String((num1 / num2)).length > 10) {
+            firstNumInput = Number(num1 / num2).toPrecision(9);
+        } else {
+            firstNumInput = num1 / num2;
+        }
+        secondNumInput = 0;
         return firstNumInput;
     }
 }
