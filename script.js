@@ -11,7 +11,7 @@ function add(num1, num2) {
     return firstNumInput;
 }
 
-// // Calculates the difference of user inputs, prepares second input for chained calculations
+// Calculates the difference of user inputs, prepares second input for chained calculations
 function subtract(num1, num2) {
     firstNumInput = num1 - num2;
     secondNumInput = 0;
@@ -79,10 +79,17 @@ calculator.addEventListener("mousedown", (event) => {
     }
 });
 
-// Logic to store numbers/operators and perform calculations on click up from button
+const operator = document.querySelectorAll(".operator");
+const specialButton = document.querySelectorAll(".specialButton");
+const plus = document.querySelector("#plus");
+const minus = document.querySelector("#minus");
+const times = document.querySelector("#times");
+const division = document.querySelector("#division");
+
+// Logic to store numbers/operators and perform calculations on button click up
 calculator.addEventListener("mouseup", (event) => {
-    if (event.target.tagName === "BUTTON" && event.target.closest("#calculator")) {
-        if (!isNaN(event.target.textContent) || event.target.textContent === ".") {
+    if (event.target.tagName === "BUTTON" && event.target.closest("#calculator")) { 
+        if (!isNaN(event.target.textContent) || event.target.textContent === ".") { // Checks for number/decimal button clicks to store first/second number inputs
             if (firstNumInput === 0 && operatorInput === 0) {
                 firstNumInput = event.target.textContent;
                 removeDisplayItem();
@@ -95,11 +102,17 @@ calculator.addEventListener("mouseup", (event) => {
                 } 
                 removeDisplayItem();
                 addDisplayItem(firstNumInput);
+            } else if (firstNumInput === 0 && operatorInput != 0 && secondNumInput === 0) {
+                secondNumInput = event.target.textContent;
+                removeDisplayItem();
+                addDisplayItem(secondNumInput);
+                operator.forEach(item => {
+                    item.style.backgroundColor = "orange";
+                });
             } else if (firstNumInput != 0 && operatorInput != 0 && secondNumInput === 0) {
                 secondNumInput = event.target.textContent;
                 removeDisplayItem();
                 addDisplayItem(secondNumInput);
-                const operator = document.querySelectorAll(".operator");
                 operator.forEach(item => {
                     item.style.backgroundColor = "orange";
                 });
@@ -113,56 +126,68 @@ calculator.addEventListener("mouseup", (event) => {
                 addDisplayItem(secondNumInput);
             }
             event.target.style.backgroundColor = "gold";
-        } else {
-            if (operatorInput === 0) {
+        } else { 
+            if (operatorInput === 0) { // Stores first operator input selected for calculation to ensure used for operating.
                 if (event.target.textContent === "+" || event.target.textContent === "-" || event.target.textContent === "*" || event.target.textContent === "/") {
                     operatorInput = event.target.textContent; 
                 }
-            } else {
+            } else { // Operates using existing stored operator, and stores new one. Allows chaining calculations. 
                 if (event.target.textContent === "+") {
                     removeDisplayItem();
                     if (operatorInput === "+") {
                         addDisplayItem(add(firstNumInput, secondNumInput));
                     } else if (operatorInput === "-") {
                         addDisplayItem(subtract(firstNumInput, secondNumInput));
+                        minus.style.backgroundColor = "orange";
                     } else if (operatorInput === "*") {
-                        addDisplayItem(multiply(firstNumInput, secondNumInput)); 
+                        addDisplayItem(multiply(firstNumInput, secondNumInput));
+                        times.style.backgroundColor = "orange"; 
                     } else {
                         addDisplayItem(divide(firstNumInput, secondNumInput));
+                        division.style.backgroundColor = "orange";
                     }
                     operatorInput = "+";
                 } else if (event.target.textContent === "-") {
                     removeDisplayItem();
                     if (operatorInput === "+") {
                         addDisplayItem(add(firstNumInput, secondNumInput));
+                        plus.style.backgroundColor = "orange";
                     } else if (operatorInput === "-") {
                         addDisplayItem(subtract(firstNumInput, secondNumInput));
                     } else if (operatorInput === "*") {
                         addDisplayItem(multiply(firstNumInput, secondNumInput)); 
+                        times.style.backgroundColor = "orange";
                     } else {
                         addDisplayItem(divide(firstNumInput, secondNumInput));
+                        division.style.backgroundColor = "orange";
                     }
                     operatorInput = "-";
                 } else if (event.target.textContent === "*") {
                     removeDisplayItem();
                     if (operatorInput === "+") {
                         addDisplayItem(add(firstNumInput, secondNumInput));
+                        plus.style.backgroundColor = "orange";
                     } else if (operatorInput === "-") {
                         addDisplayItem(subtract(firstNumInput, secondNumInput));
+                        minus.style.backgroundColor = "orange";
                     } else if (operatorInput === "*") {
                         addDisplayItem(multiply(firstNumInput, secondNumInput)); 
                     } else {
                         addDisplayItem(divide(firstNumInput, secondNumInput));
+                        division.style.backgroundColor = "orange";
                     }
                     operatorInput = "*";
                 } else if (event.target.textContent === "/") {
                     removeDisplayItem();
                     if (operatorInput === "+") {
                         addDisplayItem(add(firstNumInput, secondNumInput));
+                        plus.style.backgroundColor = "orange";
                     } else if (operatorInput === "-") {
                         addDisplayItem(subtract(firstNumInput, secondNumInput));
+                        minus.style.backgroundColor = "orange";
                     } else if (operatorInput === "*") {
                         addDisplayItem(multiply(firstNumInput, secondNumInput)); 
+                        times.style.backgroundColor = "orange";
                     } else if (operatorInput === "/") {
                         addDisplayItem(divide(firstNumInput, secondNumInput));
                     }
@@ -186,7 +211,6 @@ calculator.addEventListener("mouseup", (event) => {
                     }
                     displayInput.textContent = secondNumInput;
                 }
-                const specialButton = document.querySelectorAll(".specialButton");
                     specialButton.forEach(item => {
                         item.style.backgroundColor = "chocolate";
                     });
@@ -199,17 +223,14 @@ calculator.addEventListener("mouseup", (event) => {
                     secondNumInput = percent(secondNumInput);
                     displayInput.textContent = secondNumInput;
                 }
-                const specialButton = document.querySelectorAll(".specialButton");
                     specialButton.forEach(item => {
                         item.style.backgroundColor = "chocolate";
                     });
             } else if (event.target.textContent === "A/C") {
                 allClear();
-                const specialButton = document.querySelectorAll(".specialButton");
                 specialButton.forEach(item => {
                     item.style.backgroundColor = "chocolate";
                 });
-                const operator = document.querySelectorAll(".operator");
                 operator.forEach(item => {
                     item.style.backgroundColor = "orange";
                 });
@@ -227,7 +248,6 @@ calculator.addEventListener("mouseup", (event) => {
                     }
                     operatorInput = 0;
                 }
-                const operator = document.querySelectorAll(".operator");
                 operator.forEach(item => {
                     item.style.backgroundColor = "orange";
                 });
