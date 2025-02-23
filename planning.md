@@ -143,6 +143,8 @@
     - Clicking multiple operators in a row to start. 
     - fix size of 0 button. 
     - buttons don't work if first number entered is zero. 
+    - Fixed rounding for multiplication, adding and subtracting 
+    - allow entering multiply 0s for long decimal numbers.
     
 
 
