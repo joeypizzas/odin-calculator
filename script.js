@@ -93,11 +93,15 @@ const division = document.querySelector("#division");
 calculator.addEventListener("mouseup", (event) => {
     if (event.target.tagName === "BUTTON" && event.target.closest("#calculator")) { 
         if (!isNaN(event.target.textContent) || event.target.textContent === ".") { // Checks for number/decimal button clicks to store first/second number inputs
-            if (firstNumInput === 0 && operatorInput === 0) {
-                firstNumInput = event.target.textContent;
+            if (Number(firstNumInput) === 0 && !String(firstNumInput).includes(".") && operatorInput === 0) {
+                if (event.target.textContent === ".") {
+                    firstNumInput = 0 + event.target.textContent;
+                } else {
+                    firstNumInput = event.target.textContent;
+                }
                 removeDisplayItem();
                 addDisplayItem(firstNumInput);
-            } else if (firstNumInput != 0 && operatorInput === 0 && firstNumInput.length < 10) {
+            } else if ((firstNumInput != 0 || firstNumInput === "0.") && operatorInput === 0 && firstNumInput.length < 10) {
                 if (!isNaN(event.target.textContent)) {
                     firstNumInput += event.target.textContent;
                 } else if (!firstNumInput.includes(".")) {
@@ -105,21 +109,29 @@ calculator.addEventListener("mouseup", (event) => {
                 } 
                 removeDisplayItem();
                 addDisplayItem(firstNumInput);
-            } else if (firstNumInput === 0 && operatorInput != 0 && secondNumInput === 0) {
-                secondNumInput = event.target.textContent;
+            } else if (firstNumInput == 0 && operatorInput != 0 && Number(secondNumInput) === 0 && !String(secondNumInput).includes(".")) {
+                if (event.target.textContent === ".") {
+                    secondNumInput = 0 + event.target.textContent;
+                } else {
+                    secondNumInput = event.target.textContent;
+                }
                 removeDisplayItem();
                 addDisplayItem(secondNumInput);
                 operator.forEach(item => {
                     item.style.backgroundColor = "orange";
                 });
-            } else if (firstNumInput != 0 && operatorInput != 0 && secondNumInput === 0) {
-                secondNumInput = event.target.textContent;
+            } else if (firstNumInput != 0 && operatorInput != 0 && Number(secondNumInput) === 0 && !String(secondNumInput).includes(".")) {
+                if (event.target.textContent === ".") {
+                    secondNumInput = 0 + event.target.textContent;
+                } else {
+                    secondNumInput = event.target.textContent;
+                }
                 removeDisplayItem();
                 addDisplayItem(secondNumInput);
                 operator.forEach(item => {
                     item.style.backgroundColor = "orange";
                 });
-            } else if (firstNumInput != 0 && operatorInput != 0 && secondNumInput != 0 && secondNumInput.length < 10) {
+            } else if (firstNumInput != 0 && operatorInput != 0 && (secondNumInput != 0 || secondNumInput === "0.") && secondNumInput.length < 10) {
                 if (!isNaN(event.target.textContent)) {
                     secondNumInput += event.target.textContent;
                 } else if (!secondNumInput.includes(".")) {
