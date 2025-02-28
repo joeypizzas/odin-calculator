@@ -6,7 +6,11 @@ let operatorInput = 0;
 
 // Calculates the sum of user inputs, prepares second input for chained calculations
 function add(num1, num2) {
-    firstNumInput = Number(num1) + Number(num2);
+    if (String(num1 + num2).length > 10) {
+        firstNumInput = Number(String((Number(num1) + Number(num2))).slice(0, 10));
+    } else {
+        firstNumInput = Number(num1) + Number(num2);
+    }
     secondNumInput = 0;
     return firstNumInput;
 }
