@@ -20,7 +20,12 @@ function subtract(num1, num2) {
 
 // Calculates the product of user inputs, prepares second input for chained calculations
 function multiply(num1, num2) {
-    firstNumInput = num1 * num2;
+    if (String(num1 * num2).length > 10) {
+        firstNumInput = Number(String(num1 * num2).slice(0, 10));
+        console.log(firstNumInput);
+    } else {
+        firstNumInput = num1 * num2;
+    }
     secondNumInput = 0;
     return firstNumInput;
 }
