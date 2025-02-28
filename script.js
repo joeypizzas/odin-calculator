@@ -85,6 +85,16 @@ function allClear() {
     operatorInput = 0;
 }
 
+function hasOnlyZeroesOrDecimal(num) {
+    let stringNum = String(num);
+    for (let char of stringNum) {
+        if (!["0", "."].includes(char)) {
+            return false;
+        }
+    }
+    return true;
+}
+
 // Highlights button on click down to give user feedback
 const calculator = document.querySelector("#calculator");
 calculator.addEventListener("mousedown", (event) => {
@@ -118,7 +128,7 @@ calculator.addEventListener("mouseup", (event) => {
                 }
                 removeDisplayItem();
                 addDisplayItem(firstNumInput);
-            } else if ((firstNumInput != 0 || firstNumInput === "0.") && operatorInput === 0 && firstNumInput.length < 10) {
+            } else if ((firstNumInput != 0 || hasOnlyZeroesOrDecimal(firstNumInput)) && operatorInput === 0 && firstNumInput.length < 10) {
                 if (!isNaN(event.target.textContent)) {
                     firstNumInput += event.target.textContent;
                 } else if (!firstNumInput.includes(".")) {
@@ -148,7 +158,7 @@ calculator.addEventListener("mouseup", (event) => {
                 operator.forEach(item => {
                     item.style.backgroundColor = "orange";
                 });
-            } else if (firstNumInput != 0 && operatorInput != 0 && (secondNumInput != 0 || secondNumInput === "0.") && secondNumInput.length < 10) {
+            } else if (firstNumInput != 0 && operatorInput != 0 && (secondNumInput != 0 || hasOnlyZeroesOrDecimal(secondNumInput)) && secondNumInput.length < 10) {
                 if (!isNaN(event.target.textContent)) {
                     secondNumInput += event.target.textContent;
                 } else if (!secondNumInput.includes(".")) {
