@@ -47,11 +47,7 @@ function divide(num1, num2) {
         return "CHUMP"; 
     } else {
         if (String(num1 / num2).length > 10) {
-            if (String(num1 / num2)[0] == 0) {
-                firstNumInput = Number(num1 / num2).toPrecision(8);
-            } else {
-                firstNumInput = Number(num1 / num2).toPrecision(9);
-            }
+            firstNumInput = Number(String(num1 / num2).slice(0, 10));
         } else {
             firstNumInput = num1 / num2;
         }
